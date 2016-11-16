@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/controller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/up"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="100dp"
+            android:textSize="@dimen/button"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="xl"
+            app:roundedCorners="true"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/right"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/up"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/up"
+            android:textSize="@dimen/button"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="xl"
+            app:roundedCorners="true"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/down"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/right"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/right"
+            android:textSize="@dimen/button"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="xl"
+            app:roundedCorners="true"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/left"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_above="@+id/down"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/down"
+            android:textSize="@dimen/button"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="xl"
+            app:roundedCorners="true"/>
+
+        <ImageButton
+            android:id="@+id/Bbutton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignBottom="@+id/down"
+            android:layout_marginRight="80dp"
+            android:layout_toLeftOf="@+id/Abutton"
+            android:background="@drawable/left_circle"
+            android:scaleType="centerCrop"/>
+
+        <ImageButton
+            android:id="@+id/Abutton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/up"
+            android:background="@drawable/right_circle"
+            android:scaleType="centerCrop"/>
+    </RelativeLayout>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/controller"
+        android:layout_alignRight="@+id/controller"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="30dp"
+        app:bootstrapBrand="regular"
+        app:bootstrapSize="xl"
+        app:roundedCorners="true"
+        android:text="@string/back"/>
+</RelativeLayout>

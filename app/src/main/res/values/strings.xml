@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">GadgetRenesas</string>
+    <string name="echo">超音波</string>
+    <string name="radio_controller">ラジコン</string>
+    <string name="Line">ライン</string>
+    <string name="back">もどる</string>
+    <string name="send">送信</string>
+    <string name="logout">ログアウト</string>
+
+    <string name="app_id_label">APP_ID</string>
+    <string name="app_id_domain">mlkcca.com</string>
+    <string name="datastore_label">DataStore</string>
+    <string name="data_store">GadgetRunesas</string>
+    <string name="api_key">IIOFMCIMNCDGLNBK</string>
+    <string name="api_secret">XmVJlhGLVDYPIeEecBUPiGMOGadOOOWgRhgCcSVX</string>
+
+    <string name="connect_success">接続しました</string>
+    <string name="invalid_app_id">app_idが正しくありません</string>
+    <string name="invalid_data_store">そのデータストアは存在しません</string>
+</resources>
