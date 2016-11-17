@@ -2,6 +2,11 @@ package xyz.moroku0519.gadgetrenesas;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.util.NoSuchPropertyException;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,13 +25,34 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class AuthenticationActivity extends Activity {
 
-    private final static String APP_ID_DOMAIN = "mlkcca.com";
+    private final static String APP_ID_DOMAIN = ".mlkcca.com";
 
     private EditText mAppId;
     private EditText mDataStore;
     private BootstrapButton mButton;
     private MilkCocoa mMilkcocoa;
     private DataStore mDataStoreMessanger;
+
+    private TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if(isValidate()) {
+                mButton.setEnabled(true);
+            } else {
+                mButton.setEnabled(false);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,43 +68,39 @@ public class AuthenticationActivity extends Activity {
             public void onClick(View v) {
                 connectMilkcocoa();
                 accessDataStore();
-                if(mMilkcocoa != null && mDataStoreMessanger != null) {
-                    MilkcocoaAdapter milkcocoaAdapter = MilkcocoaAdapter.getInstance();
-                    milkcocoaAdapter.setMilkocoa(mMilkcocoa);
-                    milkcocoaAdapter.setDataStore(mDataStoreMessanger);
-                    finish();
-                    Toast.makeText(getApplicationContext(), getString(R.string.connect_success), LENGTH_SHORT).show();
-                }
+                MilkcocoaAdapter milkcocoaAdapter = MilkcocoaAdapter.getInstance();
+                milkcocoaAdapter.setMilkocoa(mMilkcocoa);
+                milkcocoaAdapter.setDataStore(mDataStoreMessanger);
+                Toast.makeText(getApplicationContext(), getString(R.string.connect_success), Toast.LENGTH_LONG).show();
+                finish();
             }
         });
+
+        mAppId.addTextChangedListener(mTextWatcher);
+        mDataStore.addTextChangedListener(mTextWatcher);
 
     }
 
     private void connectMilkcocoa() {
-        if (mAppId.getText() == null) {
-            return;
-        }
         String app_id = mAppId.getText().toString() + APP_ID_DOMAIN;
-        try {
-            mMilkcocoa = new MilkCocoa(app_id);
-        } catch (Exception e) {
-            Toast.makeText(this, getString(R.string.invalid_app_id), LENGTH_SHORT).show();
-            return;
-        }
+        mMilkcocoa = new MilkCocoa(app_id);
 
     }
 
     private void accessDataStore() {
-        if (mDataStore.getText() == null) {
+        if (mMilkcocoa == null) {
             return;
         }
-        try {
-            if(mMilkcocoa != null) {
-                mDataStoreMessanger = mMilkcocoa.dataStore(mDataStore.getText().toString());
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, getString(R.string.invalid_data_store), LENGTH_SHORT).show();
-            return;
+        mDataStoreMessanger = mMilkcocoa.dataStore(mDataStore.getText().toString());
+    }
+
+    private boolean isValidate(){
+        if(TextUtils.isEmpty(mAppId.getText().toString())){
+            return false;
         }
+        if(TextUtils.isEmpty(mDataStore.getText().toString())){
+            return false;
+        }
+        return true;
     }
 }

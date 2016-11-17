@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
@@ -71,6 +72,8 @@ public class MainActivity extends Activity implements DataStoreEventListener{
             @Override
             public void onClick(View v) {
                 logout();
+                Toast.makeText(getApplicationContext(), getString(R.string.connect_out), Toast.LENGTH_LONG).show();
+                MilkcocoaAdapter milkcocoaAdapter = MilkcocoaAdapter.getInstance();
                 startAuthencationActivity();
             }
         });
