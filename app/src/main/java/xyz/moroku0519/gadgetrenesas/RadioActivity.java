@@ -11,6 +11,7 @@ import com.mlkcca.client.DataElementValue;
 import com.mlkcca.client.DataStoreEventListener;
 
 import xyz.moroku0519.gadgetrenesas.entity.Command;
+import xyz.moroku0519.gadgetrenesas.entity.Mode;
 import xyz.moroku0519.gadgetrenesas.milkcocoa.MilkcocoaAdapter;
 
 /**
@@ -97,7 +98,7 @@ public class RadioActivity extends Activity implements DataStoreEventListener {
         MilkcocoaAdapter milkcocoaAdapter = MilkcocoaAdapter.getInstance();
         DataElementValue echo = new DataElementValue();
         try {
-            echo.put("mode", 0);
+            echo.put("mode", Mode.ECHO.id);
             echo.put("command", key.id);
         } catch (Exception e) {
 
