@@ -8,17 +8,16 @@ import android.widget.ImageButton;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.mlkcca.client.DataElement;
 import com.mlkcca.client.DataElementValue;
-import com.mlkcca.client.DataStore;
 import com.mlkcca.client.DataStoreEventListener;
-import com.mlkcca.client.MilkCocoa;
 
+import xyz.moroku0519.gadgetrenesas.entity.Command;
 import xyz.moroku0519.gadgetrenesas.milkcocoa.MilkcocoaAdapter;
 
 /**
  * Created by kazuki on 2016/11/15.
  */
 
-public class RadioActivity extends Activity  implements DataStoreEventListener{
+public class RadioActivity extends Activity implements DataStoreEventListener {
 
     private BootstrapButton mBack;
     private BootstrapButton mUp;
@@ -46,7 +45,7 @@ public class RadioActivity extends Activity  implements DataStoreEventListener{
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               finish();
+                finish();
             }
         });
 
@@ -124,16 +123,6 @@ public class RadioActivity extends Activity  implements DataStoreEventListener{
     @Override
     public void onRemoved(DataElement dataElement) {
 
-    }
-
-    private enum Command {
-        UP(0), DOWN(1), RIGHT(2), LEFT(3), STOP(4);
-
-        public final int id;
-
-        private Command(int key) {
-            id = key;
-        }
     }
 
 }

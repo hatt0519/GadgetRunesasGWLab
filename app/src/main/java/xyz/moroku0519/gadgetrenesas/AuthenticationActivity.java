@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.util.NoSuchPropertyException;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,7 +15,6 @@ import com.mlkcca.client.MilkCocoa;
 
 import xyz.moroku0519.gadgetrenesas.milkcocoa.MilkcocoaAdapter;
 
-import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * Created by kazuki on 2016/11/16.

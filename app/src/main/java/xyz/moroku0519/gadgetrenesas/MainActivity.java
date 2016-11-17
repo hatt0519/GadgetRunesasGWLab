@@ -10,9 +10,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.mlkcca.client.DataElement;
 import com.mlkcca.client.DataElementValue;
-import com.mlkcca.client.DataStore;
 import com.mlkcca.client.DataStoreEventListener;
-import com.mlkcca.client.MilkCocoa;
 
 import xyz.moroku0519.gadgetrenesas.entity.Command;
 import xyz.moroku0519.gadgetrenesas.entity.Mode;
