@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.mlkcca.client.DataElement;
 import com.mlkcca.client.DataElementValue;
 import com.mlkcca.client.DataStoreEventListener;
@@ -34,8 +32,6 @@ public class MainActivity extends Activity implements DataStoreEventListener{
         mRadio = (Button) findViewById(R.id.radio);
         mIsEchoOn = false;
 
-        BootstrapButton logout = (BootstrapButton) findViewById(R.id.logout);
-
         mEcho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,15 +51,6 @@ public class MainActivity extends Activity implements DataStoreEventListener{
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RadioActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-                Toast.makeText(getApplicationContext(), getString(R.string.connect_out), Toast.LENGTH_LONG).show();
-                startAuthencationActivity();
             }
         });
 
@@ -115,12 +102,5 @@ public class MainActivity extends Activity implements DataStoreEventListener{
     private void startAuthencationActivity() {
         Intent intent = new Intent(getApplicationContext(), AuthenticationActivity.class);
         startActivity(intent);
-    }
-
-    private void logout() {
-        MilkcocoaAdapter milkcocoaAdapter = MilkcocoaAdapter.getInstance();
-        milkcocoaAdapter.getMilkcocoa().logout();
-        milkcocoaAdapter.setMilkocoa(null);
-        milkcocoaAdapter.setDataStore(null);
     }
 }

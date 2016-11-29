@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,52 +14,31 @@
         android:id="@+id/mode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:orientation="horizontal">
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/echo"
             android:layout_width="0dp"
             android:layout_height="200dp"
+            android:layout_marginRight="40dp"
             android:layout_weight="1"
+            android:background="@drawable/echo_button_off"
             android:text="@string/echo"
-            android:textSize="@dimen/button"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="xl"
-            app:roundedCorners="true"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/button"/>
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/radio"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="40dp"
             android:layout_weight="1"
+            android:background="@drawable/radio_button"
             android:text="@string/radio_controller"
-            android:textSize="@dimen/button"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="xl"
-            app:roundedCorners="true"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/button"/>
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/line"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginLeft="200dp"
-            android:layout_weight="1"
-            android:text="@string/Line"
-            android:textSize="@dimen/button"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="xl"
-            app:roundedCorners="true"/>
+
     </LinearLayout>
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_below="@id/mode"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/logout"
-        android:textSize="80dp"/>
 </RelativeLayout>
