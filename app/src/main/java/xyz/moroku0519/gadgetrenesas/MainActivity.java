@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.mlkcca.client.DataElement;
 import com.mlkcca.client.DataElementValue;
 import com.mlkcca.client.DataStoreEventListener;
@@ -19,9 +19,9 @@ import xyz.moroku0519.gadgetrenesas.milkcocoa.MilkcocoaAdapter;
 
 public class MainActivity extends Activity implements DataStoreEventListener{
 
-    private BootstrapButton mEcho;
-    private BootstrapButton mRadio;
-    private BootstrapButton mLine;
+    private Button mEcho;
+    private Button mRadio;
+    private boolean mIsEchoOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,39 +30,31 @@ public class MainActivity extends Activity implements DataStoreEventListener{
 
         startAuthencationActivity();
 
-        mEcho = (BootstrapButton) findViewById(R.id.echo);
-        mRadio = (BootstrapButton) findViewById(R.id.radio);
-        mLine = (BootstrapButton) findViewById(R.id.line);
+        mEcho = (Button) findViewById(R.id.echo);
+        mRadio = (Button) findViewById(R.id.radio);
+        mIsEchoOn = false;
 
         BootstrapButton logout = (BootstrapButton) findViewById(R.id.logout);
 
         mEcho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEcho.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
-                mRadio.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
-                mLine.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
                 setEchoCommand();
+                if(mIsEchoOn) {
+                    mEcho.setBackground(getResources().getDrawable(R.drawable.echo_button_off));
+                    mIsEchoOn = false;
+                } else {
+                    mEcho.setBackground(getResources().getDrawable(R.drawable.echo_button_on));
+                    mIsEchoOn = true;
+                }
             }
         });
 
         mRadio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEcho.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
-                mRadio.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
-                mLine.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
                 Intent intent = new Intent(getApplicationContext(), RadioActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        mLine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEcho.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
-                mRadio.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
-                mLine.setBootstrapBrand(DefaultBootstrapBrand.DANGER);
             }
         });
 
@@ -71,7 +63,6 @@ public class MainActivity extends Activity implements DataStoreEventListener{
             public void onClick(View v) {
                 logout();
                 Toast.makeText(getApplicationContext(), getString(R.string.connect_out), Toast.LENGTH_LONG).show();
-                MilkcocoaAdapter milkcocoaAdapter = MilkcocoaAdapter.getInstance();
                 startAuthencationActivity();
             }
         });
@@ -84,7 +75,8 @@ public class MainActivity extends Activity implements DataStoreEventListener{
         MilkcocoaAdapter milkcocoaAdapter = MilkcocoaAdapter.getInstance();
         DataElementValue echo = new DataElementValue();
         try {
-            echo.put("mode", Mode.ECHO.id);
+            Mode mode = mIsEchoOn ? Mode.OFF : Mode.ECHO;
+            echo.put("mode", mode.id);
             echo.put("command", Command.STOP.id);
         } catch (Exception e) {
 
@@ -95,9 +87,8 @@ public class MainActivity extends Activity implements DataStoreEventListener{
     @Override
     public void onRestart() {
         super.onRestart();
-        mEcho.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
-        mRadio.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
-        mLine.setBootstrapBrand(DefaultBootstrapBrand.PRIMARY);
+        mEcho.setBackground(getResources().getDrawable(R.drawable.echo_button_off));
+        mRadio.setBackground(getResources().getDrawable(R.drawable.radio_button));
     }
 
 

@@ -1,6 +1,8 @@
 package xyz.moroku0519.gadgetrenesas;
 
 import android.app.Activity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -23,6 +25,9 @@ import xyz.moroku0519.gadgetrenesas.milkcocoa.MilkcocoaAdapter;
 public class AuthenticationActivity extends Activity {
 
     private final static String APP_ID_DOMAIN = ".mlkcca.com";
+
+    private final static String APP_ID = "guitariw0hgcep";
+    private final static String DATASTORE = "esp8266";
 
     private EditText mAppId;
     private EditText mDataStore;
@@ -60,6 +65,9 @@ public class AuthenticationActivity extends Activity {
         mDataStore = (EditText) findViewById(R.id.data_store);
         mButton = (BootstrapButton) findViewById(R.id.send);
 
+        mAppId.setText(APP_ID);
+        mDataStore.setText(DATASTORE);
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +83,13 @@ public class AuthenticationActivity extends Activity {
 
         mAppId.addTextChangedListener(mTextWatcher);
         mDataStore.addTextChangedListener(mTextWatcher);
+
+        if(!isNetworkconnected()) {
+            Toast.makeText(this, getString(R.string.disable_network), Toast.LENGTH_LONG);
+            mButton.setEnabled(false);
+        }
+
+        mButton.performClick();
 
     }
 
@@ -99,5 +114,12 @@ public class AuthenticationActivity extends Activity {
             return false;
         }
         return true;
+    }
+
+    private boolean isNetworkconnected() {
+        // Context 経由でインスタンスを取得する
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        return info.isConnected();
     }
 }

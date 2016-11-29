@@ -5,11 +5,11 @@ package xyz.moroku0519.gadgetrenesas.entity;
  */
 
 public enum Mode {
-    RADIO(0), ECHO(1), LINE(2);
+    OFF("O"), RADIO("R"), ECHO("S");
 
-    public final int id;
+    public final String id;
 
-    private Mode(int key) {
+    private Mode(String key) {
         id = key;
     }
 }

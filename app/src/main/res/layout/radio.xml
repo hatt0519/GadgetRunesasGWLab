@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,17 +12,15 @@
         android:paddingLeft="30dp"
         android:paddingRight="30dp">
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/up"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginLeft="100dp"
-            android:textSize="@dimen/button"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="xl"
-            app:roundedCorners="true"/>
+            android:background="@drawable/radio_controller_button"
+            android:textSize="@dimen/button"/>
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/right"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -31,12 +28,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/up"
-            android:textSize="@dimen/button"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="xl"
-            app:roundedCorners="true"/>
+            android:background="@drawable/radio_controller_button"
+            android:textSize="@dimen/button"/>
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/down"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -44,22 +39,18 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/right"
-            android:textSize="@dimen/button"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="xl"
-            app:roundedCorners="true"/>
+            android:background="@drawable/radio_controller_button"
+            android:textSize="@dimen/button"/>
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/left"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_above="@+id/down"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/down"
-            android:textSize="@dimen/button"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="xl"
-            app:roundedCorners="true"/>
+            android:background="@drawable/radio_controller_button"
+            android:textSize="@dimen/button"/>
 
         <ImageButton
             android:id="@+id/Bbutton"
@@ -81,16 +72,13 @@
             android:scaleType="centerCrop"/>
     </RelativeLayout>
 
-    <com.beardedhen.androidbootstrap.BootstrapButton
+    <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/controller"
         android:layout_alignRight="@+id/controller"
+        android:layout_below="@+id/controller"
         android:layout_marginRight="100dp"
         android:layout_marginTop="30dp"
-        app:bootstrapBrand="regular"
-        app:bootstrapSize="xl"
-        app:roundedCorners="true"
         android:text="@string/back"/>
 </RelativeLayout>

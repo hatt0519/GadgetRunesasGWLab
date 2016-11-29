@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">GadgetRenesas</string>
-    <string name="echo">超音波</string>
-    <string name="radio_controller">ラジコン</string>
-    <string name="Line">ライン</string>
-    <string name="back">もどる</string>
-    <string name="send">送信</string>
-    <string name="logout">ログアウト</string>
+    <string name="echo">Sonar</string>
+    <string name="radio_controller">RadiCon</string>
+    <string name="back">BACK</string>
+    <string name="send">SEND</string>
+    <string name="logout">LOGOUT</string>
 
     <string name="app_id_label">APP_ID</string>
     <string name="app_id_domain">.mlkcca.com</string>
@@ -15,6 +14,7 @@
     <string name="api_secret">XmVJlhGLVDYPIeEecBUPiGMOGadOOOWgRhgCcSVX</string>
 
     <string name="connect_success">接続しました</string>
+    <string name="disable_network">ネットワークに接続していません</string>
     <string name="connect_failed">接続に失敗しました</string>
     <string name="invalid_app_id">app_idが正しくありません</string>
     <string name="connect_out">接続を解除しました</string>
